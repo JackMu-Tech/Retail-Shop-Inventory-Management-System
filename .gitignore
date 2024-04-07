@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+
+# Compiled Python files
+*.pyc
+
+# Log files
+*.log
+
+# Database
+db.sqlite3
+
+# Static files
+staticfiles/
+
+# Secret key
+.env
+
+# IDE settings
+.idea/
+.vscode/
+
+# System files
+.DS_Store

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">User Profile</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="{% static 'img/jack.jpg' %}" class="img-fluid rounded-circle" alt="Profile Picture" style="width: 150px;">
+                        </div>
+                        <div class="col-md-8">
+                            <h5 class="card-title">{{ user.username }}</h5>
+                            <p class="card-text">Name: {{ user.first_name }} {{ user.last_name }}</p>
+                            <p class="card-text">Email: {{ user.email }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-block">Edit Profile</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'update_password' %}" class="btn btn-secondary btn-block">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

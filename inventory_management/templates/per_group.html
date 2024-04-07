@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Per Department Report</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Fruits and Vegetables
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Inventory of fresh fruits and vegetables.</p>
+                    <ul>
+                        <li>Apples</li>
+                        <li>Bananas</li>
+                        <li>Oranges</li>
+                        <li>Carrots</li>
+                        <li>Lettuce</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Item Measurements
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Various items and their measurements.</p>
+                    <ul>
+                        <li>1 lb bag of rice</li>
+                        <li>500g packet of pasta</li>
+                        <li>2L bottle of soda</li>
+                        <li>1 dozen eggs</li>
+                        <li>1 gallon of milk</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Drinks
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Assorted beverages and drinks.</p>
+                    <ul>
+                        <li>Coca-Cola</li>
+                        <li>Pepsi</li>
+                        <li>Sprite</li>
+                        <li>Orange Juice</li>
+                        <li>Green Tea</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Product
+{% endblock %}
+
+{% block content %}
+    <!-- Page Title -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Edit Product</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Product Form -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3">{{ product.description }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" class="form-control" id="price" name="price" value="{{ product.price }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select class="form-control" id="department" name="department">
+                                    <option value="{{ product.department }}">{{ product.department }}</option>
+                                    <!-- Add options for departments here -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="1" {% if product.status == '1' %}selected{% endif %}>Active</option>
+                                    <option value="2" {% if product.status == '2' %}selected{% endif %}>Inactive</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a href="{% url 'products' %}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

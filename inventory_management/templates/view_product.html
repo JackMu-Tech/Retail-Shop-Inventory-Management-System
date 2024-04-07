@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Product Details</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Name:</strong> {{ product.name }}</p>
+            <p><strong>Description:</strong> {{ product.description }}</p>
+            <p><strong>Price:</strong> {{ product.price }}</p>
+            <p><strong>Department:</strong> {{ product.department }}</p>
+            <p><strong>Status:</strong> {{ product.status }}</p>
+            <p><strong>Delete Flag:</strong> {{ product.delete_flag }}</p>
+            <p><strong>Date Added:</strong> {{ product.date_added }}</p>
+            <p><strong>Date Updated:</strong> {{ product.date_updated }}</p>
+        </div>
+    </div>
+    <a href="{% url 'products' %}" class="btn btn-primary">Back to Products</a>
+</div>
+{% endblock %}

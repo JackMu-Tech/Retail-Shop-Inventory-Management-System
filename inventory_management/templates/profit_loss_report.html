@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Profit/Loss Report{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Profit/Loss Report</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Transaction Type</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Your profit/loss report data goes here -->
+                                <tr>
+                                    <td>2024-04-05</td>
+                                    <td>Income</td>
+                                    <td>$1000</td>
+                                    <td>Sales Revenue</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-04-05</td>
+                                    <td>Expense</td>
+                                    <td>-$500</td>
+                                    <td>Office Supplies</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

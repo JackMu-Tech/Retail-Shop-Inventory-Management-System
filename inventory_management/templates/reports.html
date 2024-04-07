@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Reports</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{% url 'sales_report' %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <h5 class="mb-1">Sales Report</h5>
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <p class="mb-1">View sales report for a specific period.</p>
+                        </a>
+                        <a href="{% url 'expense_report' %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <h5 class="mb-1">Expense Report</h5>
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <p class="mb-1">View expense report for a specific period.</p>
+                        </a>
+                        <a href="{% url 'profit_loss_report' %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <h5 class="mb-1">Profit/Loss Report</h5>
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <p class="mb-1">View profit/loss report for a specific period.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

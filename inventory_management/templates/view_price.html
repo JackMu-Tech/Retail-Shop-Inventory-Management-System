@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Price Details</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Name:</strong> {{ price.name }}</p>
+            <p><strong>Price:</strong> {{ price.price }}</p>
+        </div>
+    </div>
+    <a href="{% url 'prices' %}" class="btn btn-primary">Back to Prices</a>
+</div>
+{% endblock %}

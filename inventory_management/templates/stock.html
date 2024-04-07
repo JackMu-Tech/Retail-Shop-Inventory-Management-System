@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4 mb-4">Stock Details</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Stock Information</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> {{ stock.name }}</p>
+                    <p><strong>Description:</strong> {{ stock.description }}</p>
+                    <p><strong>Quantity:</strong> {{ stock.quantity }}</p>
+                    <!-- Add more details here if needed -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Associated Products</h3>
+                </div>
+                <div class="card-body">
+                    {% if products %}
+                        <ul class="list-group">
+                            {% for product in products %}
+                                <li class="list-group-item">{{ product.name }} - Quantity: {{ product.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No associated products found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Prices</h3>
+                </div>
+                <div class="card-body">
+                    {% if prices %}
+                        <ul class="list-group">
+                            {% for price in prices %}
+                                <li class="list-group-item">{{ price.amount }} - Effective Date: {{ price.effective_date }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No prices found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Add Associated Product</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'manage_product' %}">
+                        {% csrf_token %}
+                        {{ product_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Add Price</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'manage_price' %}">
+                        {% csrf_token %}
+                        {{ price_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Add Price</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="btn-group" role="group">
+                <a href="{% url 'manage_stock' %}" class="btn btn-primary">Edit Stock</a>
+                <!-- Add delete button if needed -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

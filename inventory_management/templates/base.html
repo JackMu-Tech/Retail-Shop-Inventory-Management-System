@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Retail Shop Inventory Management System{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-top mr-2">
+                Retail Shop
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown {% if '/manage/' in request.path %}active{% endif %}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownManage" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manage
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownManage">
+                            <a class="dropdown-item" href="{% url 'manage_stock' %}">Manage Stock</a>
+                            <a class="dropdown-item" href="{% url 'manage_product' %}">Manage Products</a>
+                            <a class="dropdown-item" href="{% url 'manage_profile' %}">Manage Profile</a>
+                            <a class="dropdown-item" href="{% url 'manage_price' %}">Manage Prices</a>
+                            <a class="dropdown-item" href="{% url 'manage_stocking' %}">Manage Stocking</a>
+                            <a class="dropdown-item" href="{% url 'manage_user' %}">Manage User</a>
+                        </div>
+                    </li>
+                    <li class="nav-item {% if request.path == '/per_group/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'per_group' %}">Per Group</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/prices/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'prices' %}">Prices</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/products/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'products' %}">Products</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/profile/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/reports/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'reports' %}">Reports</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/update_password/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'update_password' %}">Update Password</a>
+                    </li>
+                    <li class="nav-item dropdown {% if '/view_' in request.path %}active{% endif %}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownViews" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Views
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownViews">
+                            {% if stocks %}
+                                {% for stock in stocks %}
+                                    <a class="dropdown-item" href="{% url 'view_stock' stock.id %}">{{ stock.name }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <a class="dropdown-item" href="#">No stock available</a>
+                            {% endif %}
+                            {% if prices %}
+                                {% for price in prices %}
+                                    <a class="dropdown-item" href="{% url 'view_price' price.id %}">{{ price.name }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <a class="dropdown-item" href="#">No prices available</a>
+                            {% endif %}
+                            {% if products %}
+                                {% for product in products %}
+                                    <a class="dropdown-item" href="{% url 'view_product' product.id %}">{{ product.name }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <a class="dropdown-item" href="#">No products available</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li class="nav-item {% if request.path == '/users/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'users' %}">Users</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
+        <div class="container">
+            &copy; {% now "Y" %} JackMu-Tech@2030 Retail Shop Inventory Management System
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Update Product Status</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action="{% url 'update_status' product_id %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status">
+                        <option value="1" {% if product.status == '1' %} selected {% endif %}>Active</option>
+                        <option value="2" {% if product.status == '2' %} selected {% endif %}>Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Status</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

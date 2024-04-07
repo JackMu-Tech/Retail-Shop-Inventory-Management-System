@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Manage Prices</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Add Price Form -->
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Price Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter price name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter price amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency">Currency</label>
+                            <select class="form-control" id="currency" name="currency" required>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <!-- Add more currency options as needed -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Price</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-4">
+                <!-- Price List -->
+                <h5 class="mb-3">Price List</h5>
+                <div class="list-group">
+                    {% if prices %}
+                        {% for price in prices %}
+                            <a href="{% url 'view_price' price.id %}" class="list-group-item list-group-item-action">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">{{ price.name }}</h6>
+                                    <small class="text-muted">{{ price.amount }} {{ price.currency }}</small>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        <p>No prices available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
