@@ -49,7 +49,7 @@ ROOT_URLCONF = 'RSIMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add template directories here
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Add template directories here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,12 +95,9 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/'
+STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = '/home/JackMuTech/Retail-Shop-Inventory-Management-System/staticfiles/'
 
 
 # Default primary key field type
